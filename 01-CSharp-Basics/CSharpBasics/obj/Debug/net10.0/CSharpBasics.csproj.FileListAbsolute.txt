@@ -1,0 +1,15 @@
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/bin/Debug/net10.0/CSharpBasics
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/bin/Debug/net10.0/CSharpBasics.deps.json
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/bin/Debug/net10.0/CSharpBasics.runtimeconfig.json
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/bin/Debug/net10.0/CSharpBasics.dll
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/bin/Debug/net10.0/CSharpBasics.pdb
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/obj/Debug/net10.0/CSharpBasics.GeneratedMSBuildEditorConfig.editorconfig
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/obj/Debug/net10.0/CSharpBasics.AssemblyInfoInputs.cache
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/obj/Debug/net10.0/CSharpBasics.AssemblyInfo.cs
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/obj/Debug/net10.0/CSharpBasics.csproj.CoreCompileInputs.cache
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/obj/Debug/net10.0/CSharpBasics.sourcelink.json
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/obj/Debug/net10.0/CSharpBasics.dll
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/obj/Debug/net10.0/refint/CSharpBasics.dll
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/obj/Debug/net10.0/CSharpBasics.pdb
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/obj/Debug/net10.0/CSharpBasics.genruntimeconfig.cache
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/obj/Debug/net10.0/ref/CSharpBasics.dll
