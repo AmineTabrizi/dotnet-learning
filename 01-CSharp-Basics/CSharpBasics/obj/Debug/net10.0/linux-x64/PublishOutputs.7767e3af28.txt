@@ -1,0 +1,5 @@
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/bin/Debug/net10.0/linux-x64/publish/CSharpBasics
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/bin/Debug/net10.0/linux-x64/publish/CSharpBasics.dll
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/bin/Debug/net10.0/linux-x64/publish/CSharpBasics.deps.json
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/bin/Debug/net10.0/linux-x64/publish/CSharpBasics.runtimeconfig.json
+/home/amin/Desktop/Proj/C#/dotnet-learning/01-CSharp-Basics/CSharpBasics/bin/Debug/net10.0/linux-x64/publish/CSharpBasics.pdb
