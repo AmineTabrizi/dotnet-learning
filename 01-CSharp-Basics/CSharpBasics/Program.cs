@@ -1,67 +1,54 @@
-﻿// string userInput = "A";
-// Console.WriteLine(userInput);
+﻿
+Console.WriteLine("Provide a number.");
+string userInput = Console.ReadLine();
+int number = int.Parse(userInput);
+Console.WriteLine(number);
 
-// int number;
-// number = 10;
-// Console.WriteLine(number);
-
-// string @class = "First";
-
-// int firstNumber = 10;
-// int secondNumber = 15;
-
-// Console.WriteLine(firstNumber + secondNumber);
-// Console.WriteLine(firstNumber - secondNumber);
-// Console.WriteLine(firstNumber * secondNumber);
-// Console.WriteLine(firstNumber / secondNumber);
-// Console.WriteLine("Amin" + " " + "Tabrizi");
-// string word = "aBC";
-// Console.WriteLine(word + secondNumber);
-
-// var word = "Amin";
-
-// bool isUserInputS = userChoice == "S";
-// bool isUserInputnotS = userChoice != "S";
-// bool isUserInputnotS2 = !(userChoice == "S");
-
-// var isEven = 10 % 2 == 0;
-
-// var number = 6;
-// var isEqualTo6OrLargerThan10orSmallerThan100 = number == 6 || number > 6 || number < 100;
-
-
-Console.WriteLine("Hello!");
-Console.WriteLine("What do you want to do?");
-Console.WriteLine("[S]ee all ToDOs");
-Console.WriteLine("[A]dd a TODO");
-Console.WriteLine("[R]emove a TODO");
-Console.WriteLine("[E]xit");
+// Console.WriteLine("Hello!");
+// Console.WriteLine("What do you want to do?");
+// Console.WriteLine("[S]ee all ToDOs");
+// Console.WriteLine("[A]dd a TODO");
+// Console.WriteLine("[R]emove a TODO");
+// Console.WriteLine("[E]xit");
 
 
 // Read lines from console and assigns it to the variable
-string userChoice = Console.ReadLine();
-Console.WriteLine("User Input: " + userChoice);
-if (userChoice == "S")
-{
-    Console.WriteLine("You choosed See all Todos.");
-}
-else if(userChoice == "A")
-{
-    Console.WriteLine("You choosed Add a Todo.");
-}
-else if(userChoice == "R")
-{
-    Console.WriteLine("You choosed Remove a Todo.");
-}
-else if(userChoice == "E")
-{
-    Console.WriteLine("You choosed Exit.");
-}
+var userChoice = Console.ReadLine();
 
-if(userChoice.Length > 1)
-{
-    Console.WriteLine("Not an Option!");
-}
+bool isLong = IsLong(userChoice);
 
+var result = Add(10, 20);
+Console.WriteLine("10 + 20= " + result);
+// if (userChoice == "S")
+// {
+//     PrintSelectedOption("See all TODOs");
+// }
+// else if(userChoice == "A")
+// {
+//     PrintSelectedOption("Add a TODO");
+// }
+// else if(userChoice == "R")
+// {
+//     PrintSelectedOption("Remove a TODO");
+// }
+// else if(userChoice == "E")
+// {
+//     PrintSelectedOption("Exit");
+// }
 
 Console.ReadKey();
+
+// void PrintSelectedOption(string selectedOption)
+// {
+//     Console.WriteLine("Selected option: " + selectedOption);
+// }
+
+int Add(int a, int b)
+{
+    return a + b;
+}
+
+bool IsLong(string input)
+{
+    return input.Length > 10;
+}
