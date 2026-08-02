@@ -20,6 +20,15 @@
 
 // var word = "Amin";
 
+// bool isUserInputS = userChoice == "S";
+// bool isUserInputnotS = userChoice != "S";
+// bool isUserInputnotS2 = !(userChoice == "S");
+
+// var isEven = 10 % 2 == 0;
+
+// var number = 6;
+// var isEqualTo6OrLargerThan10orSmallerThan100 = number == 6 || number > 6 || number < 100;
+
 
 Console.WriteLine("Hello!");
 Console.WriteLine("What do you want to do?");
@@ -28,18 +37,31 @@ Console.WriteLine("[A]dd a TODO");
 Console.WriteLine("[R]emove a TODO");
 Console.WriteLine("[E]xit");
 
+
 // Read lines from console and assigns it to the variable
 string userChoice = Console.ReadLine();
 Console.WriteLine("User Input: " + userChoice);
+if (userChoice == "S")
+{
+    Console.WriteLine("You choosed See all Todos.");
+}
+else if(userChoice == "A")
+{
+    Console.WriteLine("You choosed Add a Todo.");
+}
+else if(userChoice == "R")
+{
+    Console.WriteLine("You choosed Remove a Todo.");
+}
+else if(userChoice == "E")
+{
+    Console.WriteLine("You choosed Exit.");
+}
 
-bool isUserInputS = userChoice == "S";
-bool isUserInputnotS = userChoice != "S";
-bool isUserInputnotS2 = !(userChoice == "S");
-
-var isEven = 10 % 2 == 0;
-
-var number = 6;
-var isEqualTo6OrLargerThan10orSmallerThan100 = number == 6 || number > 6 || number < 100;
+if(userChoice.Length > 1)
+{
+    Console.WriteLine("Not an Option!");
+}
 
 
 Console.ReadKey();
