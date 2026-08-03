@@ -1,54 +1,16 @@
 ﻿
-Console.WriteLine("Provide a number.");
-string userInput = Console.ReadLine();
-int number = int.Parse(userInput);
-Console.WriteLine(number);
 
-// Console.WriteLine("Hello!");
-// Console.WriteLine("What do you want to do?");
-// Console.WriteLine("[S]ee all ToDOs");
-// Console.WriteLine("[A]dd a TODO");
-// Console.WriteLine("[R]emove a TODO");
-// Console.WriteLine("[E]xit");
+var seasonmonth = int.Parse(Console.ReadLine());
+Console.WriteLine(GetSeason(seasonmonth));
 
-
-// Read lines from console and assigns it to the variable
-var userChoice = Console.ReadLine();
-
-bool isLong = IsLong(userChoice);
-
-var result = Add(10, 20);
-Console.WriteLine("10 + 20= " + result);
-// if (userChoice == "S")
-// {
-//     PrintSelectedOption("See all TODOs");
-// }
-// else if(userChoice == "A")
-// {
-//     PrintSelectedOption("Add a TODO");
-// }
-// else if(userChoice == "R")
-// {
-//     PrintSelectedOption("Remove a TODO");
-// }
-// else if(userChoice == "E")
-// {
-//     PrintSelectedOption("Exit");
-// }
-
-Console.ReadKey();
-
-// void PrintSelectedOption(string selectedOption)
-// {
-//     Console.WriteLine("Selected option: " + selectedOption);
-// }
-
-int Add(int a, int b)
+string GetSeason(int month)
 {
-    return a + b;
-}
-
-bool IsLong(string input)
-{
-    return input.Length > 10;
+    return month switch
+    {
+        1 or 2 or 12 => "Winter",
+        3 or 4 or 5 => "Spring",
+        6 or 7 or 8 => "Summer",
+        9 or 10 or 11 => "Autumn",
+        _ => "Invalid Month!",
+    };
 }
