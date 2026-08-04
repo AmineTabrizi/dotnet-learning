@@ -1,16 +1,91 @@
-﻿
+﻿// Console.WriteLine("Enter a Word: ");
+// var userInput = Console.ReadLine();
 
-var seasonmonth = int.Parse(Console.ReadLine());
-Console.WriteLine(GetSeason(seasonmonth));
+// while(userInput.Length < 15)
+// {
+//     userInput += 'a';
 
-string GetSeason(int month)
+//     Console.WriteLine(userInput);
+// }
+
+// string word;
+// do
+// {
+//     Console.WriteLine("Enter a word > 5 letter");
+//     word = Console.ReadLine();
+// }
+// while(word.Length <= 5);
+
+for(int i = 0; i < 5; i++)
 {
-    return month switch
-    {
-        1 or 2 or 12 => "Winter",
-        3 or 4 or 5 => "Spring",
-        6 or 7 or 8 => "Summer",
-        9 or 10 or 11 => "Autumn",
-        _ => "Invalid Month!",
-    };
+    Console.WriteLine("Hello");
 }
+
+Console.WriteLine("The loop is finished.");
+
+
+
+
+
+
+
+
+
+
+
+
+
+// int number = 0;
+
+
+// while(number < 7)
+// {
+//     // number += 1;
+//     number++;
+//     Console.WriteLine("Number is: " + number);
+// }
+
+// Console.WriteLine("The loop is finished.");
+
+
+
+
+
+
+
+// Console.WriteLine("Hello!");
+// Console.WriteLine("What do you want to do?");
+// Console.WriteLine("[S]ee all ToDOs");
+// Console.WriteLine("[A]dd a TODO");
+// Console.WriteLine("[R]emove a TODO");
+// Console.WriteLine("[E]xit");
+
+// // Read lines from console and assigns it to the variable
+// var userChoice = Console.ReadLine();
+
+// switch (userChoice)
+// {
+//     case "S":
+//         PrintSelectedOption("See all Todos");
+//         break;
+//     case "A":
+//         PrintSelectedOption("Add a TODO");
+//         break;
+//     case "R":
+//         PrintSelectedOption("Remove a TODO");
+//         break;
+//     case "E":
+//         PrintSelectedOption("Exit");
+//         break;
+// }
+
+// void PrintSelectedOption(string selectedOption)
+// {
+//     Console.WriteLine("Selected option: " + selectedOption);
+// }
+
+
+Console.ReadKey();
+
+
+
