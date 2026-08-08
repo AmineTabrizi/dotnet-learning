@@ -1,38 +1,32 @@
-﻿// List<string> words = new List<string> ();
-
-// Console.WriteLine(words.Count);
-// words.Add("hello");
-
-var words = new List<string>
-{
-    "one",
-    "two",
-};
-var morewords = new[] {"three", "four", "five"};
-words.AddRange(morewords);
-Console.WriteLine("Index of element three is: " + words.IndexOf("three"));
-Console.WriteLine("Contains 'seven'?: " + words.Contains("seven"));
-
-words.Clear();
-Console.WriteLine("Count of words after clear: " + words.Count);
-foreach(var word in words)
-{
-    Console.WriteLine(word);
-}
-// for(int i = 0; i < words.Count; i++)
+﻿// var numbers = new[] {1, 10, -3, 29, 4, -19};
+// int nonPositiveCount;
+// var onlyPositive = GetonlyPositive(numbers, out nonPositiveCount);
+// foreach(var positiveNumber in onlyPositive)
 // {
-//     Console.WriteLine(words[i]);
+//     Console.WriteLine(positiveNumber);
 // }
-Console.WriteLine("Removing an item: ");
-// words.Remove("two");
-words.RemoveAt(0);
-foreach(var word in words)
-{
-    Console.WriteLine(word);
-}
+// Console.WriteLine("Count of non positive: " + nonPositiveCount);
+// Console.ReadKey();
+
+// List<int> GetonlyPositive(int [] numbers, out int countOfNonePositive)
+// {
+//     countOfNonePositive = 0;
+//     var result = new List<int>();
+
+//     foreach(int number in numbers)
+//     {
+//         if(number > 0)
+//         {
+//             result.Add(number);
+//         }
+//         else
+//         {
+//             countOfNonePositive++;
+//         }
+//     }
+//     return result;
+// }
 
 
 
-
-Console.ReadKey();
 
