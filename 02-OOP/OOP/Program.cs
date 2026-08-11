@@ -32,7 +32,18 @@
 
 
 var medicalApointment = new MedicalAppointment("Amin Tabrizi", new DateTime(2021,3,2));
-medicalApointment.OverwriteMonthAndDay(2, 3);
+// medicalApointment.OverwriteMonthAndDay(2, 3);
+medicalApointment.Reschdule(new DateTime(2021,3,5));
+
+
+
+class MedicalAppointmentPrinter
+{
+    public void Print(MedicalAppointment medicalAppointment)
+    {
+        Console.WriteLine("Appointment will take place on" + medicalAppointment.GetDate());
+    }
+}
 
 class MedicalAppointment
 {
@@ -44,11 +55,13 @@ class MedicalAppointment
         _patientName = patientName;
         _date = date;
     }
-    public MedicalAppointment(string patientName):
-        this(patientName, 7)
-    {
-    }
-    public MedicalAppointment(string patientName, int daysFromNow)
+    public DateTime GetDate() => _date;
+    // public MedicalAppointment(string patientName):
+    //     this(patientName, 7)
+    // {
+    // }
+
+    public MedicalAppointment(string patientName, int daysFromNow = 7)
     {
         _patientName = patientName;
         _date = DateTime.Now.AddDays(daysFromNow);
@@ -57,6 +70,8 @@ class MedicalAppointment
     public void Reschdule(DateTime date)
     {
         _date = date;
+        var printer = new MedicalAppointmentPrinter();
+        printer.Print(this);
     }
     public void OverwriteMonthAndDay(int month, int day)
     {
