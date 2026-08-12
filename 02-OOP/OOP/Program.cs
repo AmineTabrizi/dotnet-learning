@@ -2,21 +2,21 @@
 // var calculator = new ShapeMeasurementsCalculator();
 
 Console.WriteLine("Width is: " + rectangle1.Width);
+rectangle1.Width = 15;
 Console.WriteLine("Height is: " + rectangle1.GetHeight());
 Console.WriteLine("Area is: " + rectangle1.CalculateRectangleArea());
 Console.WriteLine("Circumference is: " + rectangle1.CalculateCircumference());
 
 class Rectangle
 {
-    const int NumberOfSides = 4;
-    readonly int NumberOfSidesReadonly = 4;
-    public readonly int Width;
-    private int _height;
     public Rectangle(int width, int height)
     {
         Width = GetLengthOrDefault(width, nameof(Width));
         _height = GetLengthOrDefault(height, nameof(_height));   
     }
+    
+    public int Width{get; private set; }
+    private int _height;
     public int GetHeight() => _height;
     public void SetHeight(int value)
     {
@@ -36,8 +36,8 @@ class Rectangle
         return length;
         
     }
-    public int CalculateCircumference() => (Width + Height) * 2;
-    public int CalculateRectangleArea() => Width * Height;  // Expression
+    public int CalculateCircumference() => (Width + _height) * 2;
+    public int CalculateRectangleArea() => Width * _height;  // Expression
 }
 // class ShapeMeasurementsCalculator
 // {
