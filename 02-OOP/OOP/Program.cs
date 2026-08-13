@@ -1,10 +1,12 @@
 ﻿var names = new Names();
-var path = names.BuildFilePath();
+var path = new NamesFilePathBuilder().BuildFilePath();
+var stringsTextualRepository = new StringTextualRepository();
 
 if (File.Exists(path))
 {
     Console.WriteLine("Name file already exists. Loading names.");
-    names.ReadFromTextFile();
+    var stringsFromFile = stringsTextualRepository.Read(path);
+    names.AddNames(stringsFromFile);
 }
 else
 {
@@ -16,9 +18,9 @@ else
     names.AddName("123 not a valid name");
 
     Console.WriteLine("Saving names to File...");
-    names.WriteToTextFile();
+    stringsTextualRepository.Write(path, names.All);
 }
-Console.WriteLine(names.Format());
+Console.WriteLine(new NamesFormatter().Format(names.All));
 Console.ReadKey();
 
 class NamesValidator
@@ -44,23 +46,39 @@ class StringTextualRepository
     }
 }
 
-class Names()
+class NamesFilePathBuilder
 {
-    private List<string> _name = new List<string>();
-    private readonly NamesValidator _namesValidator = new NamesValidator();
-    public void AddName(string name)
-    {
-        if (_namesValidator.IsValid(name))
-        {
-            _name.Add(name);
-        }
-    }
     public string BuildFilePath()
     {
         return "names.txt";
     }
-    public string Format()
+}
+
+class NamesFormatter
+{
+    public string Format(List<string> names)
     {
-        return string.Join(Environment.NewLine, _name);
+        return string.Join(Environment.NewLine, names);
     }
+}
+
+class Names()
+{
+    public List<string> All { get; } = new List<string>();
+    private readonly NamesValidator _namesValidator = new NamesValidator();
+    public void AddNames(List<string> stringsFromFile)
+    {
+        foreach(var name in stringsFromFile)
+        {
+            AddName(name);
+        }
+    }
+    public void AddName(string name)
+    {
+        if (_namesValidator.IsValid(name))
+        {
+            All.Add(name);
+        }
+    }
+    
 }
