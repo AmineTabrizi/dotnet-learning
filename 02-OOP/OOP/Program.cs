@@ -1,64 +1,66 @@
-﻿var rectangle1 = new Rectangle(5, 3);
-// var calculator = new ShapeMeasurementsCalculator();
+﻿var names = new Names();
+var path = names.BuildFilePath();
 
-Console.WriteLine("Width is: " + rectangle1.Width);
-// rectangle1.Width = 15;
-Console.WriteLine("Height is: " + rectangle1.GetHeight());
-Console.WriteLine("Area is: " + rectangle1.CalculateRectangleArea());
-Console.WriteLine("Circumference is: " + rectangle1.CalculateCircumference());
-
-class Rectangle
+if (File.Exists(path))
 {
-    public static int CountOfInstances{get; private set; }
-    private static DateTime _firstUsed;
-    static Rectangle(){
-        _firstUsed = DateTime.Now;
-    }
-    public Rectangle(int width, int height)
+    Console.WriteLine("Name file already exists. Loading names.");
+    names.ReadFromTextFile();
+}
+else
+{
+    Console.WriteLine("Names file does not exist yet.");
+
+    names.AddName("Amin");
+    names.AddName("not a valid name");
+    names.AddName("mohammad");
+    names.AddName("123 not a valid name");
+
+    Console.WriteLine("Saving names to File...");
+    names.WriteToTextFile();
+}
+Console.WriteLine(names.Format());
+Console.ReadKey();
+
+class NamesValidator
+{
+    public bool IsValid(string name)
     {
-        Width = GetLengthOrDefault(width, nameof(Width));
-        _height = GetLengthOrDefault(height, nameof(_height));   
-        ++CountOfInstances;
+        return name.Length >= 2 && name.Length < 25 && char.IsUpper(name[0]) && name.All(char.IsLetter);
     }
-    
-    public int Width{get; private set; }
-    private int _height;
-    public int GetHeight() => _height;
-    public void SetHeight(int value)
+}
+
+class StringTextualRepository
+{
+    private static readonly string Separator = Environment.NewLine;
+    public List<string> Read(string filePath)
     {
-        if (value > 0)
-        {
-            _height = value;
-        }
-    }
-    private int GetLengthOrDefault(int length, string name)
-    {
-        const int defaultValueIfNonePositive = 1;
-        if (length <= 0)
-        {
-            Console.WriteLine($"{name} must be a positive number.");
-            return defaultValueIfNonePositive;
-        }
-        return length;
+        var fileContents = File.ReadAllText(filePath);
+        return fileContents.Split(Separator).ToList();
         
     }
-    public int CalculateCircumference() => (Width + _height) * 2;
-    public int CalculateRectangleArea() => Width * _height;  // Expression
-
-    public string Description => $"A rectangle with width: {Width}" + $"and height {_height}";
-
+    public void Write(string filePath, List<string> strings)
+    {
+        File.WriteAllText(filePath, string.Join(Separator, strings));
+    }
 }
-// class ShapeMeasurementsCalculator
-// {
-//     public int CalculateRectangleCircumference(Rectangle rectangle)
-//     {
-//         return (rectangle.Width + rectangle.Height) * 2;
-//     }
-//     public int CalculateRectangleArea(Rectangle rectangle)
-//     {
-//         return rectangle.Width * rectangle.Height;
-//     }
-// }
 
-
-
+class Names()
+{
+    private List<string> _name = new List<string>();
+    private readonly NamesValidator _namesValidator = new NamesValidator();
+    public void AddName(string name)
+    {
+        if (_namesValidator.IsValid(name))
+        {
+            _name.Add(name);
+        }
+    }
+    public string BuildFilePath()
+    {
+        return "names.txt";
+    }
+    public string Format()
+    {
+        return string.Join(Environment.NewLine, _name);
+    }
+}
