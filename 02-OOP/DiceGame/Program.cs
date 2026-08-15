@@ -7,11 +7,9 @@ Console.ReadKey();
 class GuessingGame
 {
     private readonly Dice _dice;
-    private readonly ConsoleReader _consoleReader;
     private const int InitialTries = 3;
-    public GuessingGame(Dice dice, ConsoleReader consoleReader)
+    public GuessingGame(Dice dice)
     {
-        _consoleReader = consoleReader;
         _dice = dice;
     }
 
@@ -23,7 +21,7 @@ class GuessingGame
         var triesLeft = InitialTries;
         while(triesLeft > 0)
         {
-            var guess = _consoleReader.ReadInteger("Enter a number: ");
+            var guess = ConsoleReader.ReadInteger("Enter a number: ");
             --triesLeft;
         }
     }
@@ -31,9 +29,9 @@ class GuessingGame
     
 }
 
-public class ConsoleReader
+public static class ConsoleReader
 {
-    public int ReadInteger(string message)
+    public static int ReadInteger(string message)
     {
         int result;
         do
