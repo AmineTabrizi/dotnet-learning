@@ -24,14 +24,20 @@ namespace DiceRollGame.Game
                 {
                     return GameResult.Victory;
                 }
+                else
+                {
+                    Console.WriteLine("Wrong Number! ");
+                }
                 --triesLeft;
             }
             return GameResult.Loss;
+            
         }
 
         public static void PrintResult(GameResult gameResult)
         {
             string message = gameResult == GameResult.Victory ? "You win" : "You lose :/ ";
+            Console.WriteLine(message);
         }
     }
 }
