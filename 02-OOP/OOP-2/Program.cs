@@ -3,7 +3,7 @@ pizza.AddIngredient(new Cheddar());
 pizza.AddIngredient(new Mozzarella());
 // pizaa.AddIngredient(new TomatoSauce());
 
-Console.WriteLine(pizza.Describe());
+Console.WriteLine(pizza.ToString());
 
 
 
@@ -14,7 +14,7 @@ public class Pizza
 
     public void AddIngredient(Ingredient ingredient) => _ingredient.Add(ingredient);
 
-    public string Describe() => $"This is a pizza with {string.Join(", ", _ingredient)}";
+    public override string ToString() => $"This is a pizza with {string.Join(", ", _ingredient)}";
     
 }
 
