@@ -1,7 +1,13 @@
-﻿Ingredient ingredient = GenerateRandomIngredient();
-Console.WriteLine("Ingredient is " + ingredient);
-// Cheddar cheddar = (Cheddar) ingredient;
-Cheddar cheddar = ingredient as Cheddar;
+﻿using Polymorphism.Extensions;
+
+var cheddar = new Cheddar(2, 12);
+var tomatoSauce = new TomatoSauce(1);
+cheddar.Prepare();
+tomatoSauce.Prepare();
+
+Console.WriteLine("Next Season after Spring: " + Season.Spring.Next());
+Console.WriteLine("Next Season after winter: " + Season.Winter.Next());
+
 
 if (cheddar is not null)
 {
@@ -87,7 +93,7 @@ public class Mozzarella : Chesse
     public bool IsLight {get; }
 
     public override void Prepare() => Console.WriteLine("Slice thinly and place on top of the pizza.");
-}
+}   
 
 public class TomatoSauce : Ingredient
 {
@@ -99,4 +105,12 @@ public class TomatoSauce : Ingredient
     public int TomatoesIn100Grams {get; }
 
     public override void Prepare() => Console.WriteLine("Cook tomatoes with basil, garlic and salt." + "Spread on pizza.");
+}
+
+public enum Season
+{
+    Spring,
+    Summer,
+    Autumn,
+    Winter
 }
