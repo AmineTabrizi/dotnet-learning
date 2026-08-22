@@ -1,0 +1,53 @@
+C# Terminology
+
+Class:
+A blueprint/template for creating objects.
+
+Object:
+A thing created from a class.
+
+Instance:
+An object created from a class.
+Example: Student student = new Student();
+
+Reference:
+A variable that refers to an object in memory.
+Example: student refers to the Student object.
+
+Implementation:
+The actual code that defines how something works.
+
+Abstract:
+A class/member that is incomplete and meant to be implemented by derived classes.
+Abstract class → cannot be instantiated, but can be inherited.
+
+Sealed:
+Prevents inheritance.
+A sealed class can still be instantiated.
+
+Static:
+Belongs to the class itself, not to an instance.
+Static members can be used without creating an object.
+
+Static Class:
+Cannot be instantiated or inherited.
+A static class is implicitly sealed.
+
+Virtual:
+Provides a default implementation that derived classes can optionally override.
+
+Abstract Method:
+Has no implementation.
+Derived classes must implement it.
+
+Override:
+Provides a new implementation for an inherited virtual or abstract member.
+
+Inheritance:
+A class derives from another class and inherits its members.
+
+Polymorphism:
+The same base type can refer to different derived types, with each providing its own behavior.
+
+Extension Method:
+Adds a method to an existing type without modifying the original type.
