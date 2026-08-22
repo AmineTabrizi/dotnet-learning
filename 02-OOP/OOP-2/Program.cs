@@ -1,37 +1,37 @@
-﻿using Polymorphism.Extensions;
-
-var cheddar = new Cheddar(2, 12);
-var tomatoSauce = new TomatoSauce(1);
-cheddar.Prepare();
-tomatoSauce.Prepare();
-
-Console.WriteLine("Next Season after Spring: " + Season.Spring.Next());
-Console.WriteLine("Next Season after winter: " + Season.Winter.Next());
-
-
-if (cheddar is not null)
+﻿var bakeableDishes = new List<IBakeable>
 {
-    Console.WriteLine(cheddar.Name);
-}
-else
+    new Pizza(),
+    new Panettone(),
+};
+
+foreach(var bakeableDish in bakeableDishes)
 {
-    Console.WriteLine("Conversation failed.");
+    Console.WriteLine(bakeableDish.GetInstructions());
 }
 
-Ingredient GenerateRandomIngredient()
+Console.ReadKey();
+
+public abstract class Dessert() { }
+
+public interface IBakeable
 {
-    var random = new Random();
-    var number = random.Next(1, 4);
-    if (number == 1 || number == 2) {return new Cheddar(2, 12); }
-    else return new Mozzarella(2);
+    string GetInstructions();
 }
-public class Pizza
+
+public class Panettone : Dessert, IBakeable
+{
+    public string GetInstructions() => "Bake at 180 degrees Celsius for 35 minutes.";
+}
+
+public class Pizza : IBakeable
 {
     public int number;
     public DateTime date;
     private List<Ingredient> _ingredient = new List<Ingredient>();
 
     public void AddIngredient(Ingredient ingredient) => _ingredient.Add(ingredient);
+
+    public string GetInstructions() => "Bake at 25 degrees Celsius for 10 minutes, " + "ideally on a stone";
 
     public override string ToString() => $"This is a pizza with {string.Join(", ", _ingredient)}";
     
@@ -107,10 +107,3 @@ public class TomatoSauce : Ingredient
     public override void Prepare() => Console.WriteLine("Cook tomatoes with basil, garlic and salt." + "Spread on pizza.");
 }
 
-public enum Season
-{
-    Spring,
-    Summer,
-    Autumn,
-    Winter
-}
