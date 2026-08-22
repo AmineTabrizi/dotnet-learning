@@ -39,6 +39,8 @@ Provides a default implementation that derived classes can optionally override.
 Abstract Method:
 Has no implementation.
 Derived classes must implement it.
+can contain sealed and static methods.
+only abstract methods must be overridden in the derived types.
 
 Override:
 Provides a new implementation for an inherited virtual or abstract member.
@@ -64,4 +66,5 @@ Key Points:
 - A class can implement multiple interfaces.
 - An interface cannot be instantiated directly.
 - Interface names usually start with I (e.g., IAnimal, ILogger).
-The methods in Interfaces are virtual.
+- Methods can not be sealed or static.
+- Methods are implicitly virtual.
