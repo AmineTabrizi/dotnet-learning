@@ -51,3 +51,17 @@ The same base type can refer to different derived types, with each providing its
 
 Extension Method:
 Adds a method to an existing type without modifying the original type.
+
+Abstract members are implicitly virtual and must be overridden by derived classes.
+Sealed prevents further inheritance or overriding.
+
+Interface:
+
+An interface is a contract that defines what a class must do, not how it does it.
+
+Key Points:
+- A class that implements an interface must implement its required members.
+- A class can implement multiple interfaces.
+- An interface cannot be instantiated directly.
+- Interface names usually start with I (e.g., IAnimal, ILogger).
+The methods in Interfaces are virtual.
