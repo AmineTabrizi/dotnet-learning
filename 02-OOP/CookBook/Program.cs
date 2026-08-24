@@ -1,4 +1,6 @@
-﻿var cookiesRecipesApp = new CookiesRecipesApp(new RecipesRepository(), new RecipesConsoleUserInteraction());
+﻿using CookBook.Recipes;
+
+var cookiesRecipesApp = new CookiesRecipesApp(new RecipesRepository(), new RecipesConsoleUserInteraction());
 cookiesRecipesApp.Run();
 
 public class CookiesRecipesApp

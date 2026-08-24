@@ -1,0 +1,7 @@
+Dependency Inversion is a principle saying that types should depend on abstractions, not on concrete types.
+
+Dependency Injection means the class is given the Dependencies it needs; it doesn't create them itself.
+
+Design pattern is a typical solution to a commonly occurring problem in software design.
+
+Generic types and methods are parameterized by types.
