@@ -1,7 +1,7 @@
 ﻿using CookBook.Recipes;
 using CookBook.Recipes.Ingredients;
 
-var cookiesRecipesApp = new CookiesRecipesApp(new RecipesRepository(), new RecipesConsoleUserInteraction(new IngredientsRegister()));
+var cookiesRecipesApp = new CookiesRecipesApp(new RecipesRepository(new StringsTextualRepository()), new RecipesConsoleUserInteraction(new IngredientsRegister()));
 cookiesRecipesApp.Run("recipes.txt");
 
 public class CookiesRecipesApp
@@ -25,7 +25,7 @@ public class CookiesRecipesApp
         {
             var recipes = new Recipe(ingredients);
             allRecipes.Add(recipes);
-            // _recipesRepository.Write(filePath, allRecipes);
+            _recipesRepository.Write(filePath, allRecipes);
 
             _recipesUserInteraction.ShowMessage("Recipe added: ");
             _recipesUserInteraction.ShowMessage(recipes.ToString());
@@ -42,6 +42,7 @@ public class CookiesRecipesApp
 public interface IRecipesRepository
 {
     List<Recipe> Read(object filePath);
+    void Write(string filePath, List<Recipe> allRecipes);
 }
 public interface IRecipesUserInteraction
 {
@@ -153,6 +154,13 @@ public class RecipesConsoleUserInteraction : IRecipesUserInteraction
 
 public class RecipesRepository : IRecipesRepository
 {
+    private readonly IStringsRepository _stringRepository;
+
+    public RecipesRepository(IStringsRepository stringRepository)
+    {
+        _stringRepository = stringRepository;
+    }
+
     public List<Recipe> Read(object filePath)
     {
         return new List<Recipe>
@@ -169,5 +177,41 @@ public class RecipesRepository : IRecipesRepository
                 new Cinnamon()
             })
         };
+    }
+
+    public void Write(string filePath, List<Recipe> allRecipes)
+    {
+        var recipesAsStrings = new List<string>();
+        foreach(var recipe in allRecipes)
+        {
+            var allIds = new List<int>();
+            foreach(var ingredient in recipe.Ingredients)
+            {
+                allIds.Add(ingredient.Id);
+            }
+            recipesAsStrings.Add(string.Join(",", allIds));
+        }
+        _stringRepository.Write(filePath, recipesAsStrings);
+    }
+}
+
+public interface IStringsRepository
+{
+    List<string> Read(string filePath);
+    void Write(string filePath, List<string> strings);
+}
+
+public class StringsTextualRepository : IStringsRepository
+{
+    private static readonly string Separator = Environment.NewLine;
+
+    public List<string> Read(string filePath)
+    {
+        var fileContents = File.ReadAllText(filePath);
+        return fileContents.Split(Separator).ToList();
+    }
+    public void Write(string filePath, List<string> strings)
+    {
+        File.WriteAllText(filePath, string.Join(Separator, strings));
     }
 }
