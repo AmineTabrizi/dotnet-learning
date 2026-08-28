@@ -1,37 +1,32 @@
-﻿// var invalidPersonObject = new Person("", -32);
-
-// var emptyCollection = new List<int>();
-
-int counter = 0;
-RecursiveMethod(counter);
+﻿var result = GetFirstElement(new int[0]);
 
 Console.ReadKey();
 
-
-
-void RecursiveMethod(int counter)
+int GetFirstElement(IEnumerable<int> numbers)
 {
-    Console.WriteLine("I'm going to call my self.counter is: " + counter);
-    if (counter < 10)
+    foreach(var number in numbers)
     {
-        RecursiveMethod(counter + 1);
+        return number;
     }
+    throw new InvalidOperationException("The Collection can not be empty.");
+     
 }
-// class Person
-// {
-//     public string Name {get; }
-//     public int YearOfBirth {get; }
-//     public Person(string name, int yearOfBirth)
-//     {
-//         if(name == string.Empty)
-//         {
-//             throw new ArgumentException("The name can not be empty.");
-//         }
-//         if(yearOfBirth < 1900 || yearOfBirth > DateTime.Now.Year)
-//         {
-//             throw new ArgumentException("The year of birth must be between 1900 & the current year.");
-//         }
-//         Name = name;
-//         YearOfBirth = yearOfBirth;
-//     }
-// }
+
+bool IsFirstElementPositive(IEnumerable<int> numbers)
+{
+    try
+    {
+        var firstElement = GetFirstElement(numbers);
+        return firstElement > 0;
+    }
+    catch(InvalidOperationException ex)
+    {
+        Console.WriteLine("The Collection is empty!");
+        return true;
+    }
+    catch(NullReferenceException ex)
+    {
+        throw new ArgumentNullException("The collection is null!", ex);
+    }
+
+}
