@@ -1,13 +1,37 @@
-﻿var result = GetFirstElement(new int[0]);
+﻿// var invalidPersonObject = new Person("", -32);
+
+// var emptyCollection = new List<int>();
+
+int counter = 0;
+RecursiveMethod(counter);
 
 Console.ReadKey();
 
-int GetFirstElement(IEnumerable<int> numbers)
+
+
+void RecursiveMethod(int counter)
 {
-    foreach(var number in numbers)
+    Console.WriteLine("I'm going to call my self.counter is: " + counter);
+    if (counter < 10)
     {
-        return number;
+        RecursiveMethod(counter + 1);
     }
-    throw new Exception("The Collection can not be empty.");
-     
 }
+// class Person
+// {
+//     public string Name {get; }
+//     public int YearOfBirth {get; }
+//     public Person(string name, int yearOfBirth)
+//     {
+//         if(name == string.Empty)
+//         {
+//             throw new ArgumentException("The name can not be empty.");
+//         }
+//         if(yearOfBirth < 1900 || yearOfBirth > DateTime.Now.Year)
+//         {
+//             throw new ArgumentException("The year of birth must be between 1900 & the current year.");
+//         }
+//         Name = name;
+//         YearOfBirth = yearOfBirth;
+//     }
+// }
