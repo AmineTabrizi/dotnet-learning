@@ -9,13 +9,8 @@ private readonly IIngredientsRegister _ingredientRegister;
     private IngredientsRegister ingredientsRegister;
 
     public RecipesConsoleUserInteraction(IIngredientsRegister ingredientsRegister)
-{
-    _ingredientRegister = ingredientsRegister;
-}
-
-    public RecipesConsoleUserInteraction(IngredientsRegister ingredientsRegister)
     {
-        this.ingredientsRegister = ingredientsRegister;
+        _ingredientRegister = ingredientsRegister;
     }
 
     public void ShowMessage(string message)
