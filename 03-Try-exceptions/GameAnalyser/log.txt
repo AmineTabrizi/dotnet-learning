@@ -1,0 +1,7 @@
+[8/31/2026 3:36:24 PM]
+        Exception message: '{' is invalid after a value. Expected either ',', '}', or ']'. Path: $[1] | LineNumber: 6 | BytePositionInLine: 4. the file is: games.json
+        Stack trace:    at GameDataParserApp.Run() in /home/amin/Desktop/Proj/C#/dotnet-learning/03-Try-exceptions/GameAnalyser/Program.cs:line 61
+   at Program.<Main>$(String[] args) in /home/amin/Desktop/Proj/C#/dotnet-learning/03-Try-exceptions/GameAnalyser/Program.cs:line 7
+        
+
+        
