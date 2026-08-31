@@ -18,40 +18,34 @@ public class GameDataParserApp
 {
     public void Run()
     {
-        var fileContents = default(string);
-        bool isFileRead = false;
-        var fileName = default(string);
-        do
+        string fileName = ReadValidFilePathFromUser();
+        var fileContents = File.ReadAllText(fileName);
+        List<VideoGame> videoGames = DeserializeVideoGamesFrom(fileName, fileContents);
+        PrintGames(videoGames);
+    }
+
+    private static void PrintGames(List<VideoGame> videoGames)
+    {
+        if (videoGames.Count > 0)
         {
-            Console.WriteLine("Enter the name of the file you want to read: ");
-            fileName = Console.ReadLine();
-            if(fileName is null)
+            Console.WriteLine();
+            Console.WriteLine("Loaded games are: ");
+            foreach (var videoGame in videoGames)
             {
-            Console.WriteLine("The filename can not be null.");
+                Console.WriteLine(videoGame);
             }
-            else if(fileName == string.Empty)
-            {
-                Console.WriteLine("The file name can not be empty.");
-            }
-            else if (!File.Exists(fileName))
-            {
-                Console.WriteLine("The file does not exist.");
-            }
-            else
-            {
-                
-            fileContents = File.ReadAllText(fileName);
-            isFileRead = true;
-            }
-        
-
         }
-        while(!isFileRead);
+        else
+        {
+            Console.WriteLine("No games were loaded.");
+        }
+    }
 
-        List<VideoGame> videoGames = default;
+    private static List<VideoGame> DeserializeVideoGamesFrom(string fileName, string fileContents)
+    {
         try
         {
-            videoGames = JsonSerializer.Deserialize<List<VideoGame>>(fileContents);
+            return JsonSerializer.Deserialize<List<VideoGame>>(fileContents);
         }
         catch (JsonException ex)
         {
@@ -62,22 +56,36 @@ public class GameDataParserApp
             Console.ForegroundColor = originalColor;
             throw new JsonException($"{ex.Message} the file is: {fileName}", ex);
         }
+    }
 
-
-
-        if(videoGames.Count > 0)
+    private static string ReadValidFilePathFromUser()
+    {
+        bool IsFilePathValid = false;
+        var fileName = default(string);
+        do
         {
-            Console.WriteLine();
-            Console.WriteLine("Loaded games are: ");
-            foreach(var videoGame in videoGames)
+            Console.WriteLine("Enter the name of the file you want to read: ");
+            fileName = Console.ReadLine();
+            if (fileName is null)
             {
-                Console.WriteLine(videoGame);
+                Console.WriteLine("The filename can not be null.");
             }
+            else if (fileName == string.Empty)
+            {
+                Console.WriteLine("The file name can not be empty.");
+            }
+            else if (!File.Exists(fileName))
+            {
+                Console.WriteLine("The file does not exist.");
+            }
+            else
+            {
+                IsFilePathValid = true;
+            }
+
         }
-        else
-        {
-            Console.WriteLine("No games were loaded.");
-        }
+        while (!IsFilePathValid);
+        return fileName;
     }
 }
 
