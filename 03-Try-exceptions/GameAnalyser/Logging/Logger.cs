@@ -1,4 +1,6 @@
-public class Logger
+namespace GameAnalyser.Loggin
+{
+    public class Logger
 {
     private readonly string _logFileName;
 
@@ -16,4 +18,6 @@ public class Logger
         ";
         File.AppendAllText(_logFileName, entry);
     }
+}
+
 }
