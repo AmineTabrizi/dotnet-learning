@@ -1,25 +1,20 @@
-﻿var decimals = new List<decimal> {1.1m, 1.4m, 1.9m,2.4m, 11m};
-var ints = decimals.ConvertTo<decimal, int>();
+﻿
+// var points = CreateCollectionOfRandomLength<Point>(1000);
+var points = CreateCollectionOfRandomLength<int>(1000);
+
 
 Console.ReadKey();
 
-static class ListExtensions
+
+IEnumerable<T> CreateCollectionOfRandomLength<T> (int maxLength) where T : new()
 {
-    public static List<TTarget> ConvertTo<TSource, TTarget>(this List<TSource> input)
+    var length = new Random().Next(maxLength + 1);
+    var result = new List<T>();
+
+    for (int i = 0; i < length; ++i)
     {
-        var result = new List<TTarget>();
-        foreach(var item in input)
-        {
-            TTarget itemAfterCasting = (TTarget) Convert.ChangeType(item, typeof(TTarget));
-            result.Add(itemAfterCasting);
-        }
-
-
-        return result;
-
+        result.Add(new T());
     }
-    public static void AddToFront<T>(this List<T> list, T item)
-    {
-        list.Insert(0, item);
-    }
+
+    return result;
 }
