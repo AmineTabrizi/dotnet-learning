@@ -1,20 +1,28 @@
-﻿var numbers = new [] { 1, 2, 3, 4, 5 };
+﻿// var countryToCurrencyMapping = new Dictionary<string, string>();
 
-Console.WriteLine("Is Any Larger than 10??" + IsAny(numbers, n => n > 10));
-Console.WriteLine("Is Any Even?" + IsAny(numbers, n => n % 2 == 0));
+// countryToCurrencyMapping.Add("USA", "USD");
+// countryToCurrencyMapping.Add("Canada", "CAD");
+// countryToCurrencyMapping.Add("Japan", "JPY");
 
-Console.ReadKey();
-
-
-bool IsAny(IEnumerable<int> numbers, Func<int, bool> predicate)
+// ways to show Dictionary values
+var countryToCurrencyMapping = new Dictionary<string, string>
 {
-    foreach (var number in numbers)
-    {
-        if (predicate(number))
-        {
-            return true;
-        }
-    }
-    return false;
-}   
+    ["USA"] = "USD",
+    ["Canada"] = "CAD",
+    ["Japan"] = "JPY"
+};
 
+// var countryToCurrencyMapping = new Dictionary<string, string>
+// {
+//     {"USA", "USD"},
+//     {"Canada", "CAD"},
+//     {"Japan", "JPY"}
+// };
+
+foreach (var country in countryToCurrencyMapping)
+{
+    Console.WriteLine($"Country: {country.Key}, Currency: {country.Value}");
+}
+
+countryToCurrencyMapping["UK"] = "GBP";
+Console.WriteLine("Currency in Canada is " + countryToCurrencyMapping["Canada"]);
