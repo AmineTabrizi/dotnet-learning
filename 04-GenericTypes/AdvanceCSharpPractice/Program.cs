@@ -1,22 +1,39 @@
-﻿using System.Diagnostics;
+﻿var amin = new Person {Name = "Amin", YearOfBirth = 2007};
+var amir = new Person {Name = "Amir", YearOfBirth = 2006};
 
-Stopwatch stopwatch = Stopwatch.StartNew();
-var points = CreateCollectionOfRandomLength<int>(1000);
-stopwatch.Stop();
-Console.WriteLine($"Created {points.Count()} points in {stopwatch.ElapsedMilliseconds} ms.");
-
-Console.ReadKey();
+PrintInOrder(10, 5);
+PrintInOrder("aaa", "bb");
+PrintInOrder(amin, amir);
 
 
-IEnumerable<T> CreateCollectionOfRandomLength<T> (int maxLength) where T : new()
+void PrintInOrder<T>(T first, T second) where T : IComparable<T>
 {
-    var length = 100000000;//new Random().Next(maxLength + 1);
-    var result = new List<T>(length);
-
-    for (int i = 0; i < length; ++i)
+    if (first.CompareTo(second) > 0)
     {
-        result.Add(new T());
+        Console.WriteLine($"{second}, {first}");
     }
+    else
+    {
+        Console.WriteLine($"{first}, {second}");
+    }
+}
 
-    return result;
+public class Person : IComparable<Person>
+{
+    public string Name { get; init; }
+    public int YearOfBirth { get; init; }
+
+    public override string ToString() => $"{Name} born in ({YearOfBirth})";
+    public int CompareTo(Person other)
+    {
+        if (YearOfBirth < other.YearOfBirth)
+        {
+            return -1;
+        }
+        else if (YearOfBirth > other.YearOfBirth)
+        {
+            return 1;
+        }
+        return 0;
+    }
 }
