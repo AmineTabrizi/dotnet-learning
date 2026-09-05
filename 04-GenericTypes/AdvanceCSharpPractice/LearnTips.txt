@@ -1,0 +1,16 @@
+Strategy Pattern
+
+Problem:
+when a user has some algorithms.
+
+Solution:
+Make them seperate and ability to change them.
+
+Example:
+Payment
+ ├── CreditCard
+ ├── PayPal
+ └── BankTransfer
+
+Key idea:
+Encapsulate interchangeable behaviors.
