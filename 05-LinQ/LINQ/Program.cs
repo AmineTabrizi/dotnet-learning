@@ -1,8 +1,22 @@
-﻿var words = new List<string> {"b", "ccc", "WDss", "a"};
-var wordsLongerThan3Letters = words.Where(word => word.Length > 3);
+﻿namespace LinqTutorial
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var numbers = new List<int> {1, 5, 2, 4, 8, 3};
+            var numbersWith11 = numbers.Append(11);
+            
+            // Console.WriteLine("Numbers" + string.Join(", ", numbers));
+            // Console.WriteLine("Numbers With 10:" + string.Join(", ", numbersWith10));
+            // var oddNumbers = numbers.Where(number => number % 2 == 1);
 
-var numbers = new int[] {1, 2, 3, 4, 5, 6};
-var oddNumbers = numbers.Where(number => number % 2 == 1);
+            var orderedOddNumbers = numbersWith11.Where(
+                number => number % 2 == 1).OrderBy(number => number);
 
-Console.ReadKey();
+            Console.WriteLine("Odd Numbers ordered with 11: " + string.Join(", ", orderedOddNumbers));
 
+            Console.ReadKey();
+        }
+    }
+}
