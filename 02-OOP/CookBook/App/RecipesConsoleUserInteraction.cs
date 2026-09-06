@@ -1,5 +1,6 @@
 using CookBook.Recipes;
 using CookBook.Recipes.Ingredients;
+using Microsoft.VisualBasic;
 
 namespace CookBook.App;
 
@@ -28,25 +29,20 @@ public void PrintExistingRecipes(IEnumerable<Recipe> allRecipes)
     if (allRecipes.Count() > 0)
     {
         Console.WriteLine("Existing recipes are: " + Environment.NewLine);
-        var counter = 1;
-        foreach(var recipe in allRecipes)
-        {
-            Console.WriteLine($"*****{counter}*****");
-            Console.WriteLine(recipe);
-            Console.WriteLine();
-            counter++;
-        }
+        var allRecipesAsStrings = allRecipes
+        .Select((recipe, index) =>
+$@"*****{index + 1}*****
+{recipe}");
+        Console.WriteLine(string.Join(Environment.NewLine, allRecipesAsStrings));
+        Console.WriteLine();
     }
 }
 
 public void PromptToCreateRecipe()
 {
     Console.WriteLine("Create a new cookie recipe! " + "Available ingredients are: ");
-
-    foreach(var ingredient in _ingredientRegister.All)
-    {
-        Console.WriteLine(ingredient);
-    }
+    
+    Console.WriteLine(string.Join(Environment.NewLine, _ingredientRegister.All));
 }
 
 public IEnumerable<Ingredient> ReadIngredientsFromUser()

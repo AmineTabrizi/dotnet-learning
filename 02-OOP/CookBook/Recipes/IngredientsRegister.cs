@@ -18,13 +18,16 @@ public IEnumerable<Ingredient> All { get; } = new List<Ingredient>
 
 public Ingredient GetById(int id)
 {
-    foreach (var ingredient in All)
-    {
-        if (ingredient.Id == id)
+    var allOfIngredientWithGivenId = All.Where(ingredient => ingredient.Id == id);
+    if (allOfIngredientWithGivenId.Count() > 1)
         {
-            return ingredient;
+            throw new InvalidOperationException($"More than one ingredients have ID equal to {id}.");
         }
-    }
-    return null;
+
+    // if(All.Select(ingredient => ingredient.Id).Distinct().Count() != All.Count())
+    //     {
+    //          throw new InvalidOperationException($"Some ingredients have duplicated IDs.");
+    //     }
+    return allOfIngredientWithGivenId.FirstOrDefault();
 }
 }
