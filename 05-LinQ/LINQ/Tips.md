@@ -35,3 +35,8 @@ var evenNumbers = numbers
 
 > **LINQ query = execute later**
 > **`ToList()` / `ToArray()` = execute now**
+
+=========
+
+all properties in anonymous types are readonly.
+exmaple of anonymous: new {Name = "Jacky", Type = "Dog"};
