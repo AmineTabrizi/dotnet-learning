@@ -1,11 +1,15 @@
 ﻿const string filePath = "file.txt";
-var writer = new FileWriter(filePath);
-writer.Write("Some text.");
-writer.Write("Some other text.");
+using(var writer = new FileWriter(filePath))
+{
+    writer.Write("Some text.");
+    writer.Write("Some other text.");
+}
+    
 
-var reader = new SpecificLineFromTextFileReader(filePath);
+using var reader = new SpecificLineFromTextFileReader(filePath);
 var third = reader.ReadLineNumber(3);
 var fourth = reader.ReadLineNumber(4);
+
 
 Console.WriteLine("Third line is: " + third);
 Console.WriteLine("Fourth line is: " + fourth);
@@ -13,7 +17,7 @@ Console.WriteLine("Fourth line is: " + fourth);
 Console.WriteLine("Press any key to close.");
 Console.ReadKey();
 
-class FileWriter
+class FileWriter : IDisposable
 {
     private readonly StreamWriter _streamWriter;
 
@@ -21,13 +25,19 @@ class FileWriter
     {
         _streamWriter = new StreamWriter(filePath, true);
     }
+
+
     public void Write(string text)
     {
         _streamWriter.WriteLine(text);
         _streamWriter.Flush();
     }
+    public void Dispose()
+    {
+        _streamWriter.Dispose();
+    }
 }
-class SpecificLineFromTextFileReader
+class SpecificLineFromTextFileReader : IDisposable
 {
     private readonly StreamReader _streamReader;
 
@@ -35,6 +45,7 @@ class SpecificLineFromTextFileReader
     {
         _streamReader = new StreamReader(filePath);
     }
+
 
     public string ReadLineNumber(int lineNumber)
     {
@@ -48,5 +59,9 @@ class SpecificLineFromTextFileReader
             _streamReader.ReadLine();
         }
         return _streamReader.ReadLine();
+    }
+    public void Dispose()
+    {
+        _streamReader.Dispose();
     }
 }
