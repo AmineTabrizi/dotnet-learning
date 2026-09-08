@@ -1,20 +1,22 @@
-﻿
+﻿const string filePath = "file.txt";
+var writer = new FileWriter(filePath);
+writer.Write("Some text.");
+writer.Write("Some other text.");
 
-for (var i = 0; i < 5; ++i)
-{
-    var person = new Person {Name = "Amin", Age = 19};
-}
-
-GC.Collect();
-Console.WriteLine("Ready to close.");
+Console.WriteLine("Press any key to close.");
 Console.ReadKey();
 
-class Person
+class FileWriter
 {
-    public string Name {get; init;}
-    public int Age {get; init; }
-    ~Person()
+    private readonly StreamWriter _streamWriter;
+
+    public FileWriter(string filePath)
     {
-        Console.WriteLine($"Person called {Name} is beign distructed.");
+        _streamWriter = new StreamWriter(filePath, true);
+    }
+    public void Write(string text)
+    {
+        _streamWriter.WriteLine(text);
+        _streamWriter.Flush();
     }
 }
