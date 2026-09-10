@@ -1,38 +1,26 @@
-﻿
-Type type = typeof(Person);
+﻿var point1 = new Point(10, 15);
 
-var properties = type.GetProperties();
+var point2 = new Point(10, 15);
 
-foreach (var property in properties)
+Console.WriteLine(point1.Equals(point2));
+
+var pointMoved = point1 with {X = point1.X + 1};
+
+// All Structs are sealed. (can not be inherited)
+struct Point
 {
-    Console.WriteLine(property.Name);
-}
-
-[Author("Amin")]
-public class Calculator
-{
-    public int Add(int a, int b)
+    public int X {get; init; }
+    public int Y {get; init; }
+    public Point(int x, int y)
     {
-        return a + b;
+        X = x;
+        Y = y;
     }
-}
 
-
-public class AuthorAttribute : Attribute
-{
-    public string Name { get; }
-
-    public AuthorAttribute(string name)
+    public override bool Equals(object? obj)
     {
-        Name = name;
+        return obj is Point point && X == point.X && Y == point.Y;
     }
-}
-class Person
-{
-    public string Name { get; set; }
 
-    public void SayHello()
-    {
-        Console.WriteLine("Hello");
-    }
+    public override string ToString() => $"X: {X}, Y: {Y}";
 }
