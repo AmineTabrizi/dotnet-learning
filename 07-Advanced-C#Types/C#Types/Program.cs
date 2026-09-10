@@ -1,6 +1,18 @@
-﻿var point1 = new Point(10, 15);
+﻿var tuple1 = new Tuple<bool, string>(true, "yes");
+var tuple2 = Tuple.Create(1, false);
+
+var valueTuple1 = new ValueTuple<int, bool>(3, false);
+var valueTuple2 = ("bbb", 12);
+
+
+
+
+var point1 = new Point(10, 15);
 
 var point2 = new Point(10, 15);
+
+Console.WriteLine(point1.GetHashCode());
+Console.WriteLine(point2.GetHashCode());
 
 Console.WriteLine(point1.Equals(point2));
 
@@ -25,6 +37,11 @@ struct Point : IEquatable<Point>
     public override bool Equals(object? obj)
     {
         return obj is Point point && Equals(point);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(X, Y);
     }
 
     public override string ToString() => $"X: {X}, Y: {Y}";
