@@ -1,26 +1,40 @@
-﻿var baseAddress = "https://datausa.io/api/";
-var requestUri = "data?drilldowns=Nation&measures=Population";
+﻿var sortedList = new List<int>
+{
+    1, 4, 6, 7, 8, 10, 21, 24, 29
+};
+var indexOf1 = sortedList.FindIndexInSorted(1);
+var indexOf8 = sortedList.FindIndexInSorted(8);
+var indexOf21 = sortedList.FindIndexInSorted(21);
+var indexOf4 = sortedList.FindIndexInSorted(4);
+var indexOf2 = sortedList.FindIndexInSorted(2);
 
-IApiDataReader apiDataReader = new ApiDataReader();
-var json = apiDataReader.Read(baseAddress, requestUri);
+
 Console.ReadKey();
 
-public interface IApiDataReader
+public static class ListExtension
 {
-    Task<string> Read(string baseAdress, string requestUri);
-}
-
-public class ApiDataReader : IApiDataReader
-{
-    public async Task<string> Read(string baseAdress, string requestUri)
+    public static int? FindIndexInSorted<T>(
+        this IList<T> list, T itemToFind) where T : IComparable<T>
     {
-
-        using var client = new HttpClient();
-        client.BaseAddress = new Uri(baseAdress);
-
-        HttpResponseMessage response = await client.GetAsync(requestUri);
-        response.EnsureSuccessStatusCode();
-
-        return await response.Content.ReadAsStringAsync();
+        int leftBound = 0;
+        int rightBound = list.Count - 1;
+        while(leftBound <= rightBound)
+        {
+            int middleIndex = (leftBound + rightBound) / 2;
+            if (itemToFind.Equals(list[middleIndex]))
+            {
+                return middleIndex;
+            }
+            else if(itemToFind.CompareTo(list[middleIndex]) < 0)
+            {
+                rightBound = middleIndex - 1;
+            }
+            else
+            {
+                leftBound = middleIndex + 1;
+            }
+        }
+        return null;
     }
+    
 }
