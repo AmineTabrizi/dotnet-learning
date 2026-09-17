@@ -1,13 +1,20 @@
-﻿var list = new List<int>();
+﻿var queue = new Queue<string>();
 
-list.Add(1);
-list.Add(2);
-list.Add(3);
+queue.Enqueue("a");
+queue.Enqueue("b");
+queue.Enqueue("c");
+queue.Enqueue("d");
+queue.Enqueue("e");
 
-Console.WriteLine(list.Count);
-Console.WriteLine(list.Capacity);
+var first = queue.Dequeue();
+var second = queue.Peek();
 
-list.TrimExcess();
+var priorityQueue = new PriorityQueue<string, int>();
+priorityQueue.Enqueue("a", 5);
+priorityQueue.Enqueue("b", 3);
+priorityQueue.Enqueue("c", 4);
+priorityQueue.Enqueue("d", 2);
 
-Console.WriteLine(list.Count);
-Console.WriteLine(list.Capacity);
+var firstPriority = priorityQueue.Dequeue();
+
+Console.ReadKey();
