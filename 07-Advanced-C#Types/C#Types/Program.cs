@@ -1,16 +1,10 @@
-﻿var evenNumbers = GenerateEvenNumbers();
-foreach(var evenNumber in evenNumbers.Take(3))
-{
-    Console.WriteLine($"Number is {evenNumber}");
-}
+﻿using Utilities;
 
-Console.ReadKey();
-
-IEnumerable<int> GenerateEvenNumbers()
+public class DerivedFromPublicClass : PublicClass
 {
-    for(int i = 0; i < int.MaxValue; i += 2)
+    public void Test()
     {
-        Console.WriteLine($"Yielding {i}");
-        yield return i;
+        ProtectedInternal();
+        PrivateProtected();
     }
 }
