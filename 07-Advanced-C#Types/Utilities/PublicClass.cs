@@ -16,15 +16,6 @@ public class PublicClass
     private protected void PrivateProtected(){ }
 }
 
-internal class DerivedFromPublicClass : PublicClass
-{
-    void Test()
-    {
-        
-        PrivateProtected();
-
-    }
-}
 
 internal class InternalClass
 {
