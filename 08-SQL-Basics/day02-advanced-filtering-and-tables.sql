@@ -35,3 +35,16 @@ SELECT * FROM Products;
 
 SELECT * FROM Products
 WHERE Price BETWEEN 1500 AND 2500;
+
+ALTER TABLE Products
+ALTER COLUMN Id INT NOT NULL;
+
+ALTER TABLE Products
+ADD CONSTRAINT PK_Products_Id PRIMARY KEY (Id);
+
+UPDATE Products
+SET Stock = 1
+WHERE Id = 3;
+
+ALTER TABLE Products
+ADD CHECK (Stock >= 1);
