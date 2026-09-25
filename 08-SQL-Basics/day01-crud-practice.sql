@@ -4,14 +4,16 @@ GO
 USE StoreDb;
 GO
 
-CREATE TABLE Products (
-    Id INT,
-    Title VARCHAR(50),
-    Category VARCHAR(50),
-    Price INT,
-    Stock INT
-);
-GO
+SELECT name FROM sys.databases;
+
+-- CREATE TABLE Products (
+--     Id INT,
+--     Title VARCHAR(50),
+--     Category VARCHAR(50),
+--     Price INT,
+--     Stock INT
+-- );
+-- GO
 
 INSERT INTO Products (Id, Title, Category, Price, Stock)
 VALUES (1, 'Laptop', 'Electronics', 1000, 5);
