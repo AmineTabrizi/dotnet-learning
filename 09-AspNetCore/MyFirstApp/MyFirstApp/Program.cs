@@ -1,18 +1,20 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.Run(async (HttpContext context) => 
+app.Use(async (HttpContext context, RequestDelegate next) =>
 {
-    context.Response.Headers["Content-Type"] = "text/html";
-    if(context.Request.Method == "GET")
-    {
-        if (context.Request.Query.ContainsKey("id"))
-        {
-            string id = context.Request.Query["id"];
-            await context.Response.WriteAsync($"<p>{id}</p>");
-        }
-    }
-    
+    await context.Response.WriteAsync("Hello! ");
+    await next(context);
+});
+
+app.Use(async (HttpContext context, RequestDelegate next) =>
+{
+    await context.Response.WriteAsync("Hello Again! ");
+    await next(context);
+});
+app.Run(async (HttpContext context) =>
+{
+    await context.Response.WriteAsync("Hi");
 });
 
 app.Run();
