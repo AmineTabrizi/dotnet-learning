@@ -1,25 +1,23 @@
-using MyFirstApp.CustomMiddleware;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddTransient<MyCustomMiddleware>();
 var app = builder.Build();
 
 // Middleware 1
-app.Use(async (HttpContext context, RequestDelegate next) =>
-{
-    await context.Response.WriteAsync("From Middleware 1 ");
-    await next(context);
-});
+app.UseWhen(
+    context => context.Request.Query.ContainsKey("username"),
+    app =>
+    {
+        app.Use(async (context, next) =>
+        {
+            await context.Response.WriteAsync("From Middleware branch");
+            await next();
+        });
 
-// Middleware 2
-// app.UseMiddleware<MyCustomMiddleware>();
-// app.UseMyCustomMiddleware();
-app.UseHelloCustomMiddleware();
+    });
 
-// Middleware 3
-app.Run(async (HttpContext context) =>
+app.Run(async context =>
 {
-    await context.Response.WriteAsync("From Middleware 3 ");
+    await context.Response.WriteAsync("From The Main Chain Middleware");
 });
 
 
