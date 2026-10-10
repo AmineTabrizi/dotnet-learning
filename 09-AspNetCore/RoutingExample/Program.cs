@@ -5,17 +5,11 @@ var app = builder.Build();
 app.UseRouting();
 
 // creating endpoints
-app.Map("products/details/{id?}", async (context) =>
+// app.Map("employee/profile/{EmployeeName:minlength(3):maxlength(12)=Amin}", async (context) =>
+app.Map("employee/profile/{EmployeeName:length(3, 7)=Amin}", async (context) =>
 {
-    if (context.Request.RouteValues.ContainsKey("id"))
-    {
-        int id = Convert.ToInt32(context.Request.RouteValues["id"]);
-        await context.Response.WriteAsync($"Products details : {id}");
-    }
-    else
-    {
-        await context.Response.WriteAsync($"Products details , Id not supplied.");
-    }
+    string? employeeName = Convert.ToString(context.Request.RouteValues["employeename"]);
+    await context.Response.WriteAsync($"Profile: {employeeName}");
 });
 
 app.Run();
