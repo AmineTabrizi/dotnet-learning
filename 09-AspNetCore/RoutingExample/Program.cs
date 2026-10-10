@@ -5,11 +5,17 @@ var app = builder.Build();
 app.UseRouting();
 
 // creating endpoints
-app.Map("files/{filename}.{extension}", async (context) =>
+app.Map("products/details/{id?}", async (context) =>
 {
-    string? fileName = Convert.ToString(context.Request.RouteValues["filename"]);
-    string? extension = Convert.ToString(context.Request.RouteValues["extension"]);
-    await context.Response.WriteAsync($"{fileName}.{extension}");
+    if (context.Request.RouteValues.ContainsKey("id"))
+    {
+        int id = Convert.ToInt32(context.Request.RouteValues["id"]);
+        await context.Response.WriteAsync($"Products details : {id}");
+    }
+    else
+    {
+        await context.Response.WriteAsync($"Products details , Id not supplied.");
+    }
 });
 
 app.Run();
