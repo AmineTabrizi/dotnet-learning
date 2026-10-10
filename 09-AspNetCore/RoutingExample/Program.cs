@@ -5,18 +5,11 @@ var app = builder.Build();
 app.UseRouting();
 
 // creating endpoints
-app.UseEndpoints(endpoints =>
+app.Map("files/{filename}.{extension}", async (context) =>
 {
-    // add your endpoints here
-    endpoints.MapGet("map1", async (context) =>
-    {
-        await context.Response.WriteAsync("Map 1");
-    });
-
-    endpoints.MapPost("map2", async (context) =>
-    {
-        await context.Response.WriteAsync("Map 2");
-    });
+    string? fileName = Convert.ToString(context.Request.RouteValues["filename"]);
+    string? extension = Convert.ToString(context.Request.RouteValues["extension"]);
+    await context.Response.WriteAsync($"{fileName}.{extension}");
 });
 
 app.Run();
