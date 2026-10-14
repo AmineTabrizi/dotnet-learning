@@ -36,5 +36,11 @@ namespace ControllersExample.Controllers
             };
             return new JsonResult(person);
         }
+
+        // [Route("FileDownload")]
+        // public string FileDownload()
+        // {
+        //     return new VirtualFileResult("files/abc.txt", "text/plain").ToString();
+        // }
     }
 }
