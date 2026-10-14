@@ -3,7 +3,7 @@ using ControllersExample.Models;
 
 namespace ControllersExample.Controllers
 {
-    public class HomeController
+    public class HomeController : Controller
     {
         [Route("home")]
         [Route("/")]
@@ -12,35 +12,18 @@ namespace ControllersExample.Controllers
             return "Hello From Index";
         }
 
-        [Route("About")]
-        public string About()
+        [Route("bookstore")]
+        public IActionResult StoreBooks()
         {
-            return "Hello From About";
-        }
-
-        [Route("contact-us/{mobile:regex(^\\d{{10}}$)}")]
-        public string contact()
-        {
-            return "Hello From Contact";
-        }
-
-        [Route("Person")]
-        public JsonResult Person()
-        {
-            Person person = new Person()
+            if (!Request.Query.ContainsKey("bookid"))
             {
-                Id = Guid.NewGuid(),
-                FirstName = "John",
-                LastName = "Doe",
-                Age = 30
-            };
-            return new JsonResult(person);
+                return BadRequest("Missing bookid query parameter");
+            }
+            int bookId = Convert.ToInt32(Request.Query["bookid"]);
+            
+            // return new RedirectToActionResult("Books", "Store", new { id = bookId }, true);
+            // return RedirectToAction("Books", "Store", new { id = bookId });
+            return RedirectToActionPermanent("Books", "Store", new { id = bookId });
         }
-
-        // [Route("FileDownload")]
-        // public string FileDownload()
-        // {
-        //     return new VirtualFileResult("files/abc.txt", "text/plain").ToString();
-        // }
     }
 }
