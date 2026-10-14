@@ -13,17 +13,16 @@ namespace ControllersExample.Controllers
         }
 
         [Route("bookstore")]
-        public IActionResult StoreBooks()
+        public IActionResult StoreBooks([FromQuery] int? bookid)
         {
-            if (!Request.Query.ContainsKey("bookid"))
+            if (bookid.HasValue == false)
             {
                 return BadRequest("Missing bookid query parameter");
             }
-            int bookId = Convert.ToInt32(Request.Query["bookid"]);
             
             // return new RedirectToActionResult("Books", "Store", new { id = bookId }, true);
             // return RedirectToAction("Books", "Store", new { id = bookId });
-            return RedirectToActionPermanent("Books", "Store", new { id = bookId });
+            return RedirectToActionPermanent("Books", "Store", new { id = bookid });
         }
     }
 }
