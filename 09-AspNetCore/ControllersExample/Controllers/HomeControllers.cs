@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ControllersExample.Models;
 
 namespace ControllersExample.Controllers
 {
@@ -21,6 +22,19 @@ namespace ControllersExample.Controllers
         public string contact()
         {
             return "Hello From Contact";
+        }
+
+        [Route("Person")]
+        public JsonResult Person()
+        {
+            Person person = new Person()
+            {
+                Id = Guid.NewGuid(),
+                FirstName = "John",
+                LastName = "Doe",
+                Age = 30
+            };
+            return new JsonResult(person);
         }
     }
 }
