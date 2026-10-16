@@ -25,6 +25,7 @@ namespace ModelValidationsExample.Model
 
         [Range(0, 999.99, ErrorMessage = "{0} Should be between ${1} & ${2}.")]
         public double? Price {get; set;}
+        public List<string?> Tags {get; set;} = new List<string?>();
         public override string ToString()
         {
             return @$"Person object - Person Name: {PersonName},
