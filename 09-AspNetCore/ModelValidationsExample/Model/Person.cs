@@ -8,7 +8,7 @@ namespace ModelValidationsExample.Model
         [Required(ErrorMessage = "{0} can not be null or empty.")]
         [Display(Name = "Person Name")]
         [StringLength(30, MinimumLength = 3, ErrorMessage = "{0} Should be between {2} and {1} characters long.")]
-        [RegularExpression("^[A-Za-z .]$", ErrorMessage = "{0} Should contain only alphabet & dot & space!")]
+        [RegularExpression("^[A-Za-z .]*$", ErrorMessage = "{0} Should contain only alphabet & dot & space!")]
         public string? PersonName {get; set;}
         [EmailAddress(ErrorMessage = "{0} should be a proper email address.")]
         [Required(ErrorMessage = "{0} can not be blank.")]
