@@ -1,0 +1,16 @@
+@using ViewsExample.Models
+@{
+    string appTitle = "Asp.Net Core Demo App";
+    Person person = new Person() {Name = "Amin", DateOfBirth = Convert.ToDateTime("2001-03-02")}
+}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@appTitle</title>
+</head>
+<body>
+    <h1>Welcome to Out Demo Page.</h1>
+    <h2>Hello @person.Name</h2>
+</body>
+</html>
