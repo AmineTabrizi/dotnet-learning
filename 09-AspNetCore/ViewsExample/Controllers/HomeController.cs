@@ -16,7 +16,8 @@ namespace ViewsExample.Controllers
             new Person() {Name = "mobin", DateOfBirth = DateTime.Parse("2003-01-3"), PersonGender = Gender.Female},      
             new Person() {Name = "Ali", DateOfBirth = null, PersonGender = Gender.Male},
         };
-            ViewData["people"] = people;
+            // ViewData["people"] = people;
+            ViewBag.people = people;
             return View();
         }
     }
