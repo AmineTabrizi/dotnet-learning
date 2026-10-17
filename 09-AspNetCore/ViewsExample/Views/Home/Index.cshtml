@@ -1,5 +1,5 @@
 @using ViewsExample.Models
-
+@model IEnumerable<Person>
 
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
     <div class="page-content">
     <h1>Welcome to Out Demo Page.</h1>
 
-    @foreach(Person person in ViewBag.people)
+    @foreach(Person person in Model)
     {
         <div class="box float-left w-50">
             <h3>@person.Name</h3>
@@ -28,7 +28,7 @@
                     </tr>
                 </tbody>
             </table>
-            
+            <a href="/person-details/@person.Name">Details</a>
         </div>
     }
     </div>

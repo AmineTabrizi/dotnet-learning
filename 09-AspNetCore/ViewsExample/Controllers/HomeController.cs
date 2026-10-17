@@ -16,9 +16,25 @@ namespace ViewsExample.Controllers
             new Person() {Name = "mobin", DateOfBirth = DateTime.Parse("2003-01-3"), PersonGender = Gender.Female},      
             new Person() {Name = "Ali", DateOfBirth = null, PersonGender = Gender.Male},
         };
-            // ViewData["people"] = people;
-            ViewBag.people = people;
-            return View();
+            
+            return View("Index", people);
+        }
+
+        [Route("person-details/{name}")]
+        public IActionResult Details(string? name)
+        {
+            if(name == null)
+            {
+                return Content("Person name con't be null");
+            }
+
+            List<Person> people = new List<Person>() {
+            new Person() {Name = "Amin", DateOfBirth = null, PersonGender = Gender.Male},
+            new Person() {Name = "mobin", DateOfBirth = DateTime.Parse("2003-01-3"), PersonGender = Gender.Female},      
+            new Person() {Name = "Ali", DateOfBirth = null, PersonGender = Gender.Male},
+        };
+        Person? matchingPerson = people.Where(temp => temp.Name == name).FirstOrDefault();
+        return View(matchingPerson); //Views/Home/Details.cshtml
         }
     }
 }
