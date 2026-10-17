@@ -7,7 +7,7 @@
         new Person() {Name = "Ali", DateOfBirth = null, PersonGender = Gender.Male},
     };
 }
-@functions{
+@{
     // local function
     double? GetAge(DateTime? dateOfBirth)
     {
@@ -20,6 +20,7 @@
             return null;
         }
     }
+    string alertMessage = $"<script>alert('{people.Count} people found')</script>";
 }
 <html lang="en">
 <head>
@@ -28,6 +29,7 @@
     <title>@appTitle</title>
 </head>
 <body>
+    @Html.Raw(alertMessage)
     <h1>Welcome to Out Demo Page.</h1>
     @for(int i = 0; i < 2; i++)
         {
