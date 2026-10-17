@@ -3,9 +3,23 @@
     string appTitle = "Asp.Net Core Demo App";
     List<Person> people = new List<Person>() {
         new Person() {Name = "Amin", DateOfBirth = null, PersonGender = Gender.Male},
-        new Person() {Name = "Ali", DateOfBirth = null, PersonGender = Gender.Male},
         new Person() {Name = "mobin", DateOfBirth = DateTime.Parse("2003-01-3"), PersonGender = Gender.Female},      
+        new Person() {Name = "Ali", DateOfBirth = null, PersonGender = Gender.Male},
     };
+}
+@functions{
+    // local function
+    double? GetAge(DateTime? dateOfBirth)
+    {
+        if(dateOfBirth is not null)
+        {
+            return Math.Round((DateTime.Now - dateOfBirth.Value).TotalDays / 365.25);
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
 <html lang="en">
 <head>
@@ -15,8 +29,11 @@
 </head>
 <body>
     <h1>Welcome to Out Demo Page.</h1>
-    @foreach (Person person in people)
+    @for(int i = 0; i < 2; i++)
         {
+            Person person = people[i];
+            @* <text>Hello To </text> *@
+            @: Hello To 
             <div>
                 @person.Name
                 <span>,</span>
@@ -24,30 +41,10 @@
                 @if (person.DateOfBirth != null)
                 {
                     <span>@person.DateOfBirth.Value.ToString("MM/dd/yyyy")</span>
+                    <span>@GetAge(person.DateOfBirth) years old.</span>
                 }
             </div>
         }
-    @* <h2>Hello @person.Name</h2>
-    @if (person.DateOfBirth.HasValue)
-        {
-            double age = Math.Round((DateTime.Now - person.DateOfBirth).Value.TotalDays / 365.25);
-            <h3> @age years old</h3>
-        }
-    else
-    {
-         <h3>Date of birth is unknown.</h3>   
-    } *@
-    @* @switch (person.PersonGender)
-        {
-            case Gender.Male:
-                <p>November 19 is International Men's Day.</p>
-                break;
-            case Gender.Female:
-                <p>March 8 is International Women's Day</p>
-                break;
-            case Gender.Other:
-                <p>March 31</p>
-                break;
-        } *@
+    
     </body>
 </html>
