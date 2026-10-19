@@ -1,0 +1,155 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Page */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    background-color: #f4f7fb;
+    color: #263445;
+    line-height: 1.6;
+}
+
+/* Main Container */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.navbar{
+    background-color: #cacacc;
+    padding: 10px;
+    box-shadow: 0px 1px 2px 2px #cacacc;
+}
+.navbar-brand{
+    margin: 0px 30px 5px 5px;
+    font-size: 1.1em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, Helvetica, sans-serif;
+}
+/* Header */
+.header {
+    background: linear-gradient(135deg, #055c87, #087eaa);
+    color: #ffffff;
+    padding: 25px 20px;
+    text-align: center;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Page Content */
+.page-content {
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+    min-height: 90vh;
+}
+
+/* Page Title */
+.page-content h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #123b5d;
+    margin-bottom: 25px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #087eaa;
+}
+
+/* Person Card */
+.box {
+    background-color: #ffffff;
+    margin: 20px 0;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Card Hover */
+.box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.1);
+}
+
+/* Table */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0 0;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* Table Cells */
+.table td,
+.table th {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid #e8edf3;
+}
+
+/* First Column */
+.table td:first-child {
+    width: 35%;
+    font-weight: 600;
+    color: #52657a;
+    background-color: #f8fafc;
+}
+
+/* Second Column */
+.table td:last-child {
+    color: #1e293b;
+    font-weight: 500;
+}
+
+/* Remove Last Row Border */
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Table Row Hover */
+.table tbody tr:hover td {
+    background-color: #f0f7ff;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .page-content {
+        padding: 12px;
+        margin: 15px auto;
+    }
+
+    .page-content h1 {
+        font-size: 23px;
+    }
+
+    .box {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .table td,
+    .table th {
+        padding: 11px 10px;
+        font-size: 14px;
+    }
+}
+.float-left{
+    float: left;
+}
+.w-50{
+    width: 50%;
+}
+.w-100{
+    width: 100%;
+}
