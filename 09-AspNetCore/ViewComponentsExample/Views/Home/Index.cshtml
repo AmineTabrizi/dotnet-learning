@@ -1,5 +1,10 @@
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home";
 }
-<h1>Home</h1>   
+
+<div class="page-header">
+    <h1>Home</h1>
+    <p class="subtitle">Exploring Razor ViewComponents in ASP.NET Core</p>
+</div>
+
 @await Component.InvokeAsync("Grid")
