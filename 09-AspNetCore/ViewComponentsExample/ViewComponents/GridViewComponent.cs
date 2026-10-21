@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using ViewComponentsExample.Models;
 
 namespace ViewComponentsExample.ViewComponents
 {
@@ -6,7 +7,18 @@ namespace ViewComponentsExample.ViewComponents
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(); //invoked a partial view
+            PersonGridModel model = new PersonGridModel
+            {
+                GridTitle = "People Grid",
+                People = new List<Person>
+                {
+                    new Person { PersonName = "John Doe", JobTitle = "Software Engineer" },
+                    new Person { PersonName = "Jane Smith", JobTitle = "Project Manager" },
+                    new Person { PersonName = "Alice Johnson", JobTitle = "UX Designer" }
+                }
+            };
+            ViewBag.Grid = model;
+            return View(model); //invoked a partial view
         }
     }
 }

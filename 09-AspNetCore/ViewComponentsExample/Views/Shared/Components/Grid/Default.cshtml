@@ -1,8 +1,10 @@
+@model PersonGridModel
+
 <div class="box">
     <div class="box-header">
         <div class="box-title">
             <span class="box-badge">ViewComponent</span>
-            <h3>Data Grid</h3>
+            <h3>@Model.GridTitle</h3>
         </div>
         <span class="badge-count">2 Records</span>
     </div>
@@ -16,14 +18,13 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><span class="table-badge">#1</span></td>
-                    <td class="font-medium">One</td>
-                </tr>
-                <tr>
-                    <td><span class="table-badge">#2</span></td>
-                    <td class="font-medium">Two</td>
-                </tr>
+                @foreach(Person person in Model.People)
+                {
+                    <tr>
+                        <td class="font-medium">@person.PersonName</td>
+                        <td class="font-medium">@person.JobTitle</td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
