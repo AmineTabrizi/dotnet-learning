@@ -1,21 +1,15 @@
 <h1>Home</h1>
 
-@* <partial name="_ListPartialView"></partial> *@
-@* @{
-    await Html.RenderPartialAsync("_ListPartialView");
-} *@
-@await Html.PartialAsync("_ListPartialView")
-
 @{
-    ViewData["ListTitle"] = "Countries";
-            ViewData["ListItems"] = new List<string>()
-            {
-                "USA",
-                "Canada",
-                "India",
-                "Japan"
-            };
+    ListModel listModel = new ListModel();
+    listModel.ListTitle = "Countries";
+    listModel.ListItems = new List<string>()
+    {
+        "USA",
+        "Canada",
+        "Africa",
+        "Korea",
+        "India"
+    };
 }
-<div class="box">
-    <partial name="_ListPartialView" />
-</div>
+<partial name="_ListPartialView" model="listModel" /> 
