@@ -5,3 +5,17 @@
     await Html.RenderPartialAsync("_ListPartialView");
 } *@
 @await Html.PartialAsync("_ListPartialView")
+
+@{
+    ViewData["ListTitle"] = "Countries";
+            ViewData["ListItems"] = new List<string>()
+            {
+                "USA",
+                "Canada",
+                "India",
+                "Japan"
+            };
+}
+<div class="box">
+    <partial name="_ListPartialView" />
+</div>
