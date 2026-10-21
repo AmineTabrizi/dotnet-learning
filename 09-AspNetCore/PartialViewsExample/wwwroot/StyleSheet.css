@@ -1,0 +1,364 @@
+/* =========================
+   General Reset
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================
+   Page
+========================= */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    background-color: #f1f5f9;
+    color: #1e293b;
+    line-height: 1.7;
+}
+
+/* =========================
+   Main Container
+========================= */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* =========================
+   Navbar
+========================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    background: linear-gradient(135deg, #0f172a, #1e3a5f);
+    padding: 20px 28px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.12);
+}
+
+/* Brand */
+.navbar-brand {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+/* Navbar List */
+.navbar ul {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+}
+
+/* Navbar Links */
+.navbar ul li a {
+    display: inline-block;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 9px 18px;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+}
+
+/* Navbar Hover */
+.navbar ul li a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* =========================
+   Header
+========================= */
+.header {
+    background: linear-gradient(135deg, #0f172a, #2563eb);
+    color: #ffffff;
+    padding: 35px 25px;
+    text-align: center;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.12);
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* =========================
+   Page Content
+========================= */
+.page-content {
+    width: 100%;
+    max-width: 1000px;
+    margin: 35px auto;
+    padding: 25px;
+    min-height: 75vh;
+}
+
+/* =========================
+   Page Title
+========================= */
+.page-content h1 {
+    font-size: 30px;
+    font-weight: 750;
+    color: #0f172a;
+    margin-bottom: 25px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid #3b82f6;
+}
+
+/* Secondary Headings */
+.page-content h2 {
+    font-size: 23px;
+    color: #1e3a5f;
+    margin: 25px 0 15px;
+}
+
+.page-content h3 {
+    font-size: 19px;
+    color: #334155;
+    margin-bottom: 12px;
+}
+
+/* Paragraphs */
+.page-content p {
+    color: #475569;
+    margin-bottom: 15px;
+}
+
+/* =========================
+   Person Card / Box
+========================= */
+.box {
+    background-color: #ffffff;
+    margin: 22px 0;
+    padding: 28px;
+    border-radius: 14px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.04);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Card Hover */
+.box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.09);
+}
+
+/* =========================
+   Table
+========================= */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+}
+
+/* Table Header */
+.table th {
+    background-color: #1e3a5f;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* Table Cells */
+.table td,
+.table th {
+    padding: 15px 18px;
+    text-align: left;
+    border-bottom: 1px solid #e8edf3;
+}
+
+/* First Column */
+.table td:first-child {
+    width: 35%;
+    font-weight: 600;
+    color: #475569;
+    background-color: #f8fafc;
+}
+
+/* Second Column */
+.table td:last-child {
+    color: #1e293b;
+    font-weight: 500;
+}
+
+/* Remove Last Row Border */
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Table Row Hover */
+.table tbody tr:hover td {
+    background-color: #eff6ff;
+}
+
+/* =========================
+   Links
+========================= */
+.page-content a {
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.page-content a:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+/* =========================
+   Forms
+========================= */
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 8px 0 16px;
+    font: inherit;
+    color: #1e293b;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+}
+
+/* Buttons */
+button,
+input[type="submit"] {
+    width: auto;
+    min-width: 120px;
+    padding: 11px 22px;
+    color: #ffffff;
+    background-color: #2563eb;
+    border: none;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+/* =========================
+   Utility Classes
+========================= */
+.float-left {
+    float: left;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+/* =========================
+   Responsive Design
+========================= */
+@media (max-width: 768px) {
+    .container {
+        padding: 12px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .navbar ul {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .navbar ul li a {
+        padding: 8px 12px;
+    }
+
+    .page-content {
+        padding: 15px;
+        margin: 20px auto;
+    }
+
+    .page-content h1 {
+        font-size: 25px;
+    }
+
+    .header {
+        padding: 25px 15px;
+    }
+
+    .box {
+        padding: 20px;
+    }
+
+    .table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .table td,
+    .table th {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .w-50 {
+        width: 100%;
+    }
+}
+
+/* Small Screens */
+@media (max-width: 480px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    .navbar ul li a {
+        font-size: 0.9rem;
+    }
+
+    .page-content h1 {
+        font-size: 22px;
+    }
+
+    .box {
+        padding: 15px;
+    }
+}
